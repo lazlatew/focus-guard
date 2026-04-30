@@ -1,70 +1,70 @@
 # 🧠 Distraction Killer
 
-A minimalistic web app designed to help you stay focused and reduce distractions during study or work sessions.
+A minimal and powerful **browser extension + web app** designed to help you stay focused, reduce distractions, and build better study/work habits.
 
 ---
 
-## 🚀 Features
+## 🚀 Live Demo / Download
 
-* ⏱️ Focus timer (Pomodoro style)
-* 🚫 Distraction tracking
-* 📊 Simple productivity stats
-* 🎯 Clean and minimal UI
-* 🔄 Reset and restart sessions
+👉 🔗 Preview / Demo: https://YOUR-PREVIEW-LINK.com  
+👉 🧩 Download Extension: chrome://extensions/?id=lhajiiajclcombdaiieafckoleiblohl 
 
 ---
 
-## 🛠️ Technologies Used
+## ✨ Features
 
-* HTML5
-* CSS3
-* JavaScript (Vanilla JS)
+- ⏱️ Pomodoro Focus Timer (structured work/break sessions)
+- 🚫 Distraction tracking (monitor how often you lose focus)
+- 📊 Simple productivity statistics
+- 🎯 Clean, minimal, distraction-free UI
+- 🔄 Reset & restart sessions anytime
+- 🌐 Browser extension support for real-time focus tracking
 
 ---
 
-## 💡 Idea Behind the Project
+## 🧠 Why Distraction Killer?
 
-Distraction Killer is built to simulate real-life focus challenges.
-Instead of just tracking time, it also tracks how often you lose focus — helping you build better discipline and awareness.
+Most productivity tools only track **time spent working**.
+
+**Distraction Killer tracks behavior.**
+
+Instead of only answering:
+> “How long did I work?”
+
+It helps you understand:
+> “How often did I lose focus — and what triggered it?”
+
+This shift builds real awareness, which leads to better discipline and long-term productivity improvement.
+
+---
+
+## 🛠️ Built With
+
+- HTML5
+- CSS3
+- Vanilla JavaScript
+- Browser Extension APIs
 
 ---
 
 ## 📸 Preview
 
-
-<img width="1366" height="584" alt="image" src="https://github.com/user-attachments/assets/93228926-737d-4dcc-b087-60db7291c0f4" />
-
+![Distraction Killer Preview](https://github.com/user-attachments/assets/93228926-737d-4dcc-b087-60db7291c0f4)
 
 ---
 
-## 🔧 How to Run Locally
+👨‍💻 Author
 
-1. Clone the repository:
+Created by: lazlatew
+![GitHub](https://github.com/lazlatew)
+
+## 📦 Installation
+
+### 💻 Web Version
+
+Clone the repository:
 
 ```bash
 git clone https://github.com/YOUR-USERNAME/distraction-killer.git
-```
 
-2. Open `index.html` in your browser
 
----
-
-## 📈 Future Improvements
-
-* 💾 Save progress with Local Storage
-* 🔥 Streak system
-* 📊 Advanced statistics (charts)
-* 🌙 Dark / Light mode
-* 🎵 Focus sounds (ambient noise)
-
----
-
-## 👨‍💻 Author
-
-Created by [lazlatew]
-
----
-
-## ⭐️ Show your support
-
-If you like this project, consider giving it a star ⭐ on GitHub!
