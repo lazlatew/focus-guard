@@ -7,7 +7,7 @@ A minimal and powerful **browser extension + web app** designed to help you stay
 ## 🚀 Live Demo / Download
 
 👉 🔗 Preview / Demo: https://YOUR-PREVIEW-LINK.com  
-👉 🧩 Download Extension: chrome://extensions/?id=lhajiiajclcombdaiieafckoleiblohl 
+👉 🧩 Download Extension: https://YOUR-EXTENSION-LINK.com
 
 ---
 
