@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DeepFocus Guardian</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+    <header>
+      <h1>DeepFocus Guardian</h1>
+      <p>Eliminate digital distractions before they break your focus.</p>
+    </header>
+
+    <main class="dashboard">
+      <section class="card">
+        <h2>Focus Session</h2>
+        <div id="timer">25:00</div>
+
+        <div class="progress-container">
+          <div id="progressBar"></div>
+        </div>
+
+        <div style="display:flex; gap:10px; margin-top:20px;">
+          <button id="startBtn" class="primary">Start Focus</button>
+          <button id="pauseBtn" class="secondary">Pause</button>
+          <button id="resetBtn" class="danger">Reset</button>
+        </div>
+
+        <p id="status" style="margin-top:15px; color:#94a3b8;">Ready to protect your focus.</p>
+      </section>
+
+      <section class="card">
+        <h2>Distraction Blacklist</h2>
+        <input type="text" id="siteInput" placeholder="Enter distracting site/app..." />
+        <button id="addSiteBtn" class="primary" style="margin-top:12px; width:100%;">
+          Add to Blacklist
+        </button>
+
+        <ul id="blacklist" style="margin-top:20px;"></ul>
+
+        <button id="simulateBtn" class="danger" style="margin-top:20px; width:100%;">
+          Simulate Distraction
+        </button>
+      </section>
+    </main>
+  </div>
+
+  <audio id="alertSound">
+    <source src="https://actions.google.com/sounds/v1/alarms/alarm_clock.ogg" type="audio/ogg">
+  </audio>
+
+  <script src="app.js"></script>
+</body>
+</html>

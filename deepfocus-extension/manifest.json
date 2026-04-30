@@ -1,0 +1,15 @@
+{
+  "manifest_version": 3,
+  "name": "DeepFocus Guardian",
+  "version": "2.0",
+  "description": "Smart productivity blocker for distracting websites.",
+  "permissions": ["tabs", "storage"],
+  "host_permissions": ["<all_urls>"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "DeepFocus Guardian"
+  }
+}
