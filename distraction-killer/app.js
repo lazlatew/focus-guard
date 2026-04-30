@@ -1,54 +1,116 @@
-let time = 25 * 60;
-let timerInterval;
-let distractions = 0;
+const SESSION_TIME = 25 * 60;
+let time = SESSION_TIME;
+let timerInterval = null;
+let isRunning = false;
+
+let blacklist = JSON.parse(localStorage.getItem("blacklist")) || [];
 
 const timerDisplay = document.getElementById("timer");
-const startBtn = document.getElementById("startBtn");
-const distractBtn = document.getElementById("distractBtn");
-const resetBtn = document.getElementById("resetBtn");
-const distractionsDisplay = document.getElementById("distractions");
+const progressBar = document.getElementById("progressBar");
+const statusText = document.getElementById("status");
 
-function updateTimer() {
-  let minutes = Math.floor(time / 60);
-  let seconds = time % 60;
+const siteInput = document.getElementById("siteInput");
+const addSiteBtn = document.getElementById("addSiteBtn");
+const blacklistUI = document.getElementById("blacklist");
+const simulateBtn = document.getElementById("simulateBtn");
+const alertSound = document.getElementById("alertSound");
 
-  timerDisplay.textContent =
-    `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
+function updateUI() {
+  const minutes = Math.floor(time / 60);
+  const seconds = time % 60;
+  timerDisplay.textContent = `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
+
+  const progress = (time / SESSION_TIME) * 100;
+  progressBar.style.width = `${progress}%`;
 }
 
 function startTimer() {
+  if (isRunning) return;
+
+  isRunning = true;
+  statusText.textContent = "Focus shield activated.";
+
   timerInterval = setInterval(() => {
     time--;
-    updateTimer();
+    updateUI();
 
     if (time <= 0) {
       clearInterval(timerInterval);
-      alert("Фокус сесията приключи!");
+      isRunning = false;
+      statusText.textContent = "Mission complete. Focus session finished.";
     }
   }, 1000);
 }
 
+function pauseTimer() {
+  clearInterval(timerInterval);
+  isRunning = false;
+  statusText.textContent = "Session paused.";
+}
+
 function resetTimer() {
   clearInterval(timerInterval);
-  time = 25 * 60;
-  distractions = 0;
-  distractionsDisplay.textContent = distractions;
-  updateTimer();
+  time = SESSION_TIME;
+  isRunning = false;
+  statusText.textContent = "Ready to protect your focus.";
+  updateUI();
 }
 
-function addDistraction() {
-  distractions++;
-  distractionsDisplay.textContent = distractions;
+function addSite() {
+  const value = siteInput.value.trim();
 
-  document.body.style.background = "#7f1d1d";
+  if (!value) return;
+
+  blacklist.push(value);
+  localStorage.setItem("blacklist", JSON.stringify(blacklist));
+
+  siteInput.value = "";
+  renderBlacklist();
+}
+
+function renderBlacklist() {
+  blacklistUI.innerHTML = "";
+
+  blacklist.forEach((site, index) => {
+    const li = document.createElement("li");
+    li.style.marginBottom = "10px";
+    li.style.background = "#1e293b";
+    li.style.padding = "12px";
+    li.style.borderRadius = "12px";
+    li.style.display = "flex";
+    li.style.justifyContent = "space-between";
+
+    li.innerHTML = `
+      <span>${site}</span>
+      <button onclick="removeSite(${index})" style="background:#dc2626; color:white; border:none; padding:6px 10px; border-radius:8px;">X</button>
+    `;
+
+    blacklistUI.appendChild(li);
+  });
+}
+
+function removeSite(index) {
+  blacklist.splice(index, 1);
+  localStorage.setItem("blacklist", JSON.stringify(blacklist));
+  renderBlacklist();
+}
+
+function simulateDistraction() {
+  document.body.classList.add("alert-mode");
+  statusText.textContent = "⚠ DISTRACTION DETECTED — Return to work immediately!";
+  alertSound.play();
 
   setTimeout(() => {
-    document.body.style.background = "#0f172a";
-  }, 300);
+    document.body.classList.remove("alert-mode");
+    statusText.textContent = "Focus restored.";
+  }, 4000);
 }
 
-startBtn.addEventListener("click", startTimer);
-resetBtn.addEventListener("click", resetTimer);
-distractBtn.addEventListener("click", addDistraction);
+document.getElementById("startBtn").addEventListener("click", startTimer);
+document.getElementById("pauseBtn").addEventListener("click", pauseTimer);
+document.getElementById("resetBtn").addEventListener("click", resetTimer);
+addSiteBtn.addEventListener("click", addSite);
+simulateBtn.addEventListener("click", simulateDistraction);
 
-updateTimer();
+updateUI();
+renderBlacklist();
